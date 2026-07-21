@@ -29,7 +29,9 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+My song recommender looks at each song's genre, mood, energy, tempo, valence, danceability, and acousticness, and compares those to what the user says they like — their favorite genre, favorite mood, a target energy level, and whether they enjoy acoustic songs. To score a song, it gives the most points for a matching genre, a bit less for a matching mood, and for energy it rewards songs that are close to the user's target level rather than just favoring high or low energy, with a small bonus if the acoustic preference lines up too. Once every song in the catalog has a score, the system sorts them from highest to lowest and hands back the top few as the final recommendations, along with a short reason for each pick.
 
+I finalized the exact math the recommender uses to score songs — genre match is worth 2 points, mood match is worth 1 point, energy gets up to 1 point based on how close it is to what the listener wants (not just high or low), and matching the acoustic preference adds a small half-point bonus, for a max possible score of 4.5. I also added a note admitting the system will probably lean too hard on genre — it might rank a just-okay genre match above a song that's actually a much better mood and energy fit, and it'll naturally recommend more of whatever genres and moods are most common in the small starter catalog, giving less variety to listeners with different taste.
 
 ---
 
@@ -82,6 +84,46 @@ Paste a sample of your recommender's output here as a text block so a reader can
 ```
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
+
+```
+Loaded songs: 18
+
+==================================================
+TOP RECOMMENDATIONS
+==================================================
+
+1. Sunrise City — Neon Echo
+   Score: 3.98
+   Why:
+     - genre matches (pop): +2.0
+     - mood matches (happy): +1.0
+     - energy closeness: +0.98
+
+2. Gym Hero — Max Pulse
+   Score: 2.87
+   Why:
+     - genre matches (pop): +2.0
+     - energy closeness: +0.87
+
+3. Rooftop Lights — Indigo Parade
+   Score: 1.96
+   Why:
+     - mood matches (happy): +1.0
+     - energy closeness: +0.96
+
+4. Night Drive Loop — Neon Echo
+   Score: 0.95
+   Why:
+     - energy closeness: +0.95
+
+5. Storm Runner — Voltline
+   Score: 0.89
+   Why:
+     - energy closeness: +0.89
+
+==================================================
+
+```
 
 ---
 
